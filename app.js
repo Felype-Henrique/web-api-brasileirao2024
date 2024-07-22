@@ -1,0 +1,1 @@
+import tabela2024 from "./tabela";
