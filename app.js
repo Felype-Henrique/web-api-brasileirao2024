@@ -34,6 +34,12 @@ app.put('/:sigla', (req, res) => {
     res.status(200).send(timeSelecionado);
 })
 
+app.post('/', (req, res) => {
+    const novoTime = Object.keys(req.body);
+    tabela2024.push(novoTime);
+    res.status(200).send(novoTime);
+});
+
 app.listen(300, () => {
     console.log("Servidor rodando com sucesso")
 });
