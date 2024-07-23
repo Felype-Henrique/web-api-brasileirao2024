@@ -1,7 +1,10 @@
+import { Console } from 'console';
 import tabela2024 from './tabela.js';
 import express from 'express'
 
 const app = express();
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.status(200).send(tabela2024);
@@ -18,6 +21,18 @@ app.get('/:sigla', (req, res) => {
     }
     res.status(200).send(time);
 });
+
+app.put('/:sigla', (req, res) => {
+    const siglaInformada = req.params.sigla.toLocaleUpperCase();
+    const timeSelecionado = tabela2024.find(t => t.sigla === siglaInformada);
+
+    const campos = Object.keys(req.body);
+    for (let campo of campos) {
+        timeSelecionado[campo] = req.body[campo];
+    }
+
+    res.status(200).send(timeSelecionado);
+})
 
 app.listen(300, () => {
     console.log("Servidor rodando com sucesso")
