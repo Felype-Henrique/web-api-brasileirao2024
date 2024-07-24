@@ -23,7 +23,7 @@ app.get('/:sigla', (req, res) => {
 });
 
 app.put('/:sigla', (req, res) => {
-    const siglaInformada = req.params.sigla.toLocaleUpperCase();
+    const siglaInformada = req.params.sigla.toUpperCase();
     const timeSelecionado = tabela2024.find(t => t.sigla === siglaInformada);
 
     const campos = Object.keys(req.body);
@@ -35,9 +35,16 @@ app.put('/:sigla', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const novoTime = Object.keys(req.body);
+    const novoTime = req.body;
     tabela2024.push(novoTime);
     res.status(200).send(novoTime);
+});
+
+app.delete('/:sigla', (req, res) => {
+    const siglaInformada = req.params.sigla.toUpperCase();
+    const indiceTimeSelecionado = tabela2024.findIndex(t => t.sigla === siglaInformada);
+    const timeRemovido = tabela2024.splice(indiceTimeSelecionado, 1);
+    res.status(200).send(timeRemovido)
 });
 
 app.listen(300, () => {
