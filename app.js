@@ -26,6 +26,9 @@ app.put('/:sigla', (req, res) => {
     const siglaInformada = req.params.sigla.toUpperCase();
     const timeSelecionado = tabela2024.find(t => t.sigla === siglaInformada);
 
+    if (!timeSelecionado) {
+        res.status(404).send('Não existe na série A do Brasileirão time com a sigla informada! ')
+    }
     const campos = Object.keys(req.body);
     for (let campo of campos) {
         timeSelecionado[campo] = req.body[campo];
