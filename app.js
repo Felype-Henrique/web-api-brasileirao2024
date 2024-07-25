@@ -1,6 +1,6 @@
-import { Console } from 'console';
 import tabela2024 from './tabela.js';
 import express from 'express'
+import { modeloTime, modeloAtualizacaoTime } from './validacao.js';
 
 const app = express();
 
@@ -28,6 +28,13 @@ app.put('/:sigla', (req, res) => {
 
     if (!timeSelecionado) {
         res.status(404).send('Não existe na série A do Brasileirão time com a sigla informada! ');
+        return;
+    }
+
+    const error = modeloAtualizacaoTime.validate(req.body).error;
+
+    if (error) {
+        res.status(400).send(error);
         return;
     }
     const campos = Object.keys(req.body);
