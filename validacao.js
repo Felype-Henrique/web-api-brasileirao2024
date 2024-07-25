@@ -1,7 +1,7 @@
 import Joi from "joi";
 import { join } from "path";
 
-const modeloTime = Joi.object(
+export const modeloTime = Joi.object(
     {
         nome: Joi.string().min(4).required,
         sigla: Joi.string().length(3).required,
@@ -13,4 +13,18 @@ const modeloTime = Joi.object(
         golsSofridos: Joi.number().default(0),
         saldoGols: Joi.number().default(0)
     }
-)
+);
+
+export const modeloAtualizacaoTime = Joi.object(
+    {
+        nome: Joi.string().min(4),
+        sigla: Joi.string().length(3),
+        pontos: Joi.number(),
+        vitorias: Joi.number(),
+        empates: Joi.number(),
+        derrotas: Joi.number(),
+        golsMarcados: Joi.number(),
+        golsSofridos: Joi.number(),
+        saldoGols: Joi.number(),
+    }
+).min(1);
