@@ -47,6 +47,14 @@ app.put('/:sigla', (req, res) => {
 
 app.post('/', (req, res) => {
     const novoTime = req.body;
+
+    const error = modeloTime.validate(novoTime).error;
+
+    if (error) {
+        res.status(400).send(error);
+        return;
+    }
+
     tabela2024.push(novoTime);
     res.status(200).send(novoTime);
 });

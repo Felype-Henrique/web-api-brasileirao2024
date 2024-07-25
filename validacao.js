@@ -2,8 +2,8 @@ import Joi from "joi";
 
 export const modeloTime = Joi.object(
     {
-        nome: Joi.string().min(4).required,
-        sigla: Joi.string().length(3).required,
+        nome: Joi.string().min(4).required(),
+        sigla: Joi.string().length(3).required(),
         pontos: Joi.number().default(0),
         vitorias: Joi.number().default(0),
         empates: Joi.number().default(0),
