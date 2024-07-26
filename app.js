@@ -56,7 +56,7 @@ app.post('/', (req, res) => {
     }
 
     tabela2024.push(novoTime);
-    res.status(200).send(novoTime);
+    res.status(201).send(novoTime);
 });
 
 app.delete('/:sigla', (req, res) => {
