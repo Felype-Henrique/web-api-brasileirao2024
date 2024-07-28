@@ -53,12 +53,12 @@ export const modeloAtualizacaoTime = Joi.object(
     }
 ).min(1);
 
-#Tecnologias utilizadas
+##Tecnologias utilizadas
 
 -Express
 -Joi
 
-#Como executar
+##Como executar
 
 ```bash
 
@@ -72,3 +72,5 @@ $ npm install
 $ node app.js
 
 #4. Acesse a aplicação em http://localhost:300
+
+```
