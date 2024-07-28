@@ -53,12 +53,15 @@ export const modeloAtualizacaoTime = Joi.object(
     }
 ).min(1);
 
-##Tecnologias utilizadas
 
--Express
--Joi
+```
 
-##Como executar
+## Tecnologias utilizadas
+
+- Express
+- Joi
+
+## Como executar
 
 ```bash
 
